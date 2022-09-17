@@ -5,8 +5,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.exactText;
-import static com.codeborne.selenide.Condition.pseudo;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class OrderingCardTest {
@@ -52,7 +51,7 @@ public class OrderingCardTest {
         form.$("[data-test-id=name] input").setValue("Иванов Иван");
         form.$("[data-test-id=phone] input").setValue("+79001234567");
         form.$("button").click();
-        $("[data-test-id='agreement'].input_invalid").shouldHave(pseudo(":checkbox__text", "color", "rgb(255, 92, 92)"));
+        form.$("[data-test-id=agreement]").should(cssClass("input_invalid"));
     }
 
     @Test
